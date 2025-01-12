@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 400px;
+            width: 100%;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: left; /* Align text to the left */
+        }
+
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+            margin-left: 150px;
+        }
+
+        .company-name {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-90%);
+            cursor: pointer;
+            color: #007bff;
+        }
+
+        .password-toggle:hover {
+            text-decoration: underline;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .brand-logo {
+            width: 60px;
+            height: auto;
+            margin-bottom: 10px;
+            /* Update the path for the brand logo */
+            margin-left: 150px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Update the path for the brand logo -->
+        <img src="/static/Untitled-2.jpg" alt="Brand Logo" class="brand-logo">
+        <div class="company-name">DevPlanet Technologies</div>
+        <h1>Login</h1>
+        <form action="/dashboard" method="post">
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required>
+            <label for="password">Password:</label>
+            <div class="password-container">
+                <input type="password" id="password" name="password" required>
+                <span class="password-toggle" onclick="togglePassword()">Show Password</span>
+            </div>
+            <input type="submit" value="Login">
+            {% if error %}
+            <p class="error">{{ error }}</p>
+            {% endif %}
+        </form>
+    </div>
+
+    <script>
+        function togglePassword() {
+            var passwordInput = document.getElementById("password");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                document.querySelector(".password-toggle").textContent = "Hide Password";
+            } else {
+                passwordInput.type = "password";
+                document.querySelector(".password-toggle").textContent = "Show Password";
+            }
+        }
+    </script>
+</body>
+</html>

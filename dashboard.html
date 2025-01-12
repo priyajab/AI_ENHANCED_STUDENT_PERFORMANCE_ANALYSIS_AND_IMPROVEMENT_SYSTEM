@@ -1,0 +1,267 @@
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Dashboard</title>
+    <script src="https://code.responsivevoice.org/responsivevoice.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: left;
+        }
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .subject-info {
+            margin-bottom: 20px;
+        }
+        .subject-info table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .subject-info th, .subject-info td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .subject-info th {
+            background-color: #f2f2f2;
+        }
+        .image-upload {
+            margin-top: 20px;
+        }
+        .feedback-form {
+            margin-top: 20px;
+        }
+        .feedback-form label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        .feedback-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        .feedback-form button {
+            padding: 12px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .feedback-form button:hover {
+            background-color: #0056b3;
+        }
+        .feedback-form input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .feedback-form input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Welcome to Your Dashboard</h1>
+
+    <h2>User Information</h2>
+    <p>Student ID: {{ user['student_id'] }}</p>
+    <p>Name: {{ user['student_name'] }}</p>
+    <p>Email: {{ user['mail'] }}</p>
+    <p>Specialization: {{ user['specialization'] }}</p>
+
+    <div class="subject-info">
+        <h2>Performance Summary</h2>
+        <table>
+            <tr>
+                <th>Subject</th>
+                <th>Internal Marks (Out of 40)</th>
+            </tr>
+            <!-- Add rows for other subjects -->
+            <tr>
+                <td>Machine Learning</td>
+                <td>{{ user['machine_learning_internals'] }} / 40</td>
+            </tr>
+            <tr>
+                <td>IoT</td>
+                <td>{{ user['iot_internals'] }} / 40</td>
+            </tr>
+            <tr>
+                <td>Data Science</td>
+                <td>{{ user['data_science_internals'] }} / 40</td>
+            </tr>
+            <tr>
+                <td>Cyber Security</td>
+                <td>{{ user['cyber_security_internals'] }} / 40</td>
+            </tr>
+            <tr>
+                <td>DBMS</td>
+                <td>{{ user['dbms_internals'] }} / 40</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="subject-info">
+        <h2>Unit Test Marks (Out of 10)</h2>
+        <table>
+            <tr>
+                <th>Subject</th>
+                <th>Unit Test 1</th>
+                <th>Unit Test 2</th>
+            </tr>
+            <!-- Add rows for other subjects -->
+            <tr>
+                <td>Machine Learning</td>
+                <td>{{ user['machine_learning_ut1'] }} / 10</td>
+                <td>{{ user['machine_learning_ut2'] }} / 10</td>
+            </tr>
+            <tr>
+                <td>IoT</td>
+                <td>{{ user['iot_ut1'] }} / 10</td>
+                <td>{{ user['iot_ut2'] }} / 10</td>
+            </tr>
+            <tr>
+                <td>Data Science</td>
+                <td>{{ user['data_science_ut1'] }} / 10</td>
+                <td>{{ user['data_science_ut2'] }} / 10</td>
+            </tr>
+            <tr>
+                <td>Cyber Security</td>
+                <td>{{ user['cyber_security_ut1'] }} / 10</td>
+                <td>{{ user['cyber_security_ut2'] }} / 10</td>
+            </tr>
+            <tr>
+                <td>DBMS</td>
+                <td>{{ user['dbms_ut1'] }} / 10</td>
+                <td>{{ user['dbms_ut2'] }} / 10</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="subject-info">
+        <h2>Mid Test Marks (Out of 20)</h2>
+        <table>
+            <tr>
+                <th>Subject</th>
+                <th>Mid Test 1</th>
+                <th>Mid Test 2</th>
+            </tr>
+            <!-- Add rows for other subjects -->
+            <tr>
+                <td>Machine Learning</td>
+                <td>{{ user['machine_learning_mt1'] }} / 20</td>
+                <td>{{ user['machine_learning_mt2'] }} / 20</td>
+            </tr>
+            <tr>
+                <td>IoT</td>
+                <td>{{ user['iot_mt1'] }} / 20</td>
+                <td>{{ user['iot_mt2'] }} / 20</td>
+            </tr>
+            <tr>
+                <td>Data Science</td>
+                <td>{{ user['data_science_mt1'] }} / 20</td>
+                <td>{{ user['data_science_mt2'] }} / 20</td>
+            </tr>
+            <tr>
+                <td>Cyber Security</td>
+                <td>{{ user['cyber_security_mt1'] }} / 20</td>
+                <td>{{ user['cyber_security_mt2'] }} / 20</td>
+            </tr>
+            <tr>
+                <td>DBMS</td>
+                <td>{{ user['dbms_mt1'] }} / 20</td>
+                <td>{{ user['dbms_mt2'] }} / 20</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="image-upload">
+        <h2>Handwritten Text Analysis</h2>
+        <form id="upload-form" action="/upload" method="post" enctype="multipart/form-data">
+            <label for="image">Upload Handwritten Image:</label>
+            <input type="file" name="image" accept="image/*" required>
+            <input type="submit" value="Upload and Analyze">
+        </form>
+    </div>
+    <div class="feedback-form">
+        <h2>Student Feedback</h2>
+        <form id="feedback-form" action="/submit_feedback" method="post">
+            <label for="feedback">Your Feedback:</label>
+            <textarea id="feedback" name="feedback" rows="4" required></textarea>
+            <input type="submit" value="Submit Feedback">
+        </form>
+    </div>
+    <script>
+        function startVoiceInput() {
+            responsiveVoice.start('#feedback', {
+                onEndCallback: function () {
+                    translateFeedback();
+                }
+            });
+        }
+    
+        function translateFeedback() {
+            var originalFeedback = $('#feedback').val();
+            var translationApiKey = 'YOUR_TRANSLATION_API_KEY';
+            var translationApiUrl = `https://translation.googleapis.com/language/translate/v2?key=${translationApiKey}`;
+    
+            var translationRequest = {
+                q: originalFeedback,
+                source: 'auto',
+                target: 'en'
+            };
+    
+            $.ajax({
+                url: translationApiUrl,
+                type: 'POST',
+                data: JSON.stringify(translationRequest),
+                contentType: 'application/json',
+                success: function (data) {
+                    $('#translatedFeedback').val(data.data.translations[0].translatedText);
+                },
+                error: function (error) {
+                    console.error('Translation error:', error);
+                },
+            });
+        }
+    </script>
+</div>
+
+</body>
+</html>

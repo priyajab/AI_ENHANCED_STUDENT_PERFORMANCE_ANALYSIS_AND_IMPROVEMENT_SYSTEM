@@ -1,0 +1,52 @@
+<!-- upload_result.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Result</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        h1 {
+            color: #007bff;
+        }
+        img {
+            max-width: 100%;
+            margin-top: 20px;
+        }
+        p {
+            margin-top: 10px;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% if error %}
+            <h1>Error: {{ error }}</h1>
+        {% else %}
+            <h1>Upload Successful!</h1>
+            <img src="{{ image_path }}" alt="Uploaded Image">
+            <p>Extracted Text: {{ extracted_text }}</p>
+            <p>Grade: {{ grade }}</p>  <!-- Display the grade here -->
+        {% endif %}
+    </div>
+</body>
+</html>
